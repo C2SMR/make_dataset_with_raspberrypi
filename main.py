@@ -1,4 +1,4 @@
-import cv2
+import picamera
 import os
 import time
 
@@ -8,16 +8,16 @@ class Dataset:
         self.time_sleep: int = time_sleep
         self.path: str = 'dataset/'
         self.extension: str = '.png'
-        self.video: cv2.VideoCapture = cv2.VideoCapture(0)
+        self.camera = picamera.PiCamera()
+        time.sleep(2)
 
     def get_number_picture(self) -> int:
         return len(os.listdir(self.path))
 
     def take_picture(self):
-        cv2.imwrite(f'{self.path}'
-                    f'{self.get_number_picture()}'
-                    f'{self.extension}',
-                    self.video.read()[1])
+        self.camera.capture(self.path +
+                            str(self.get_number_picture()) +
+                            self.extension)
 
     def run(self):
         while True:
