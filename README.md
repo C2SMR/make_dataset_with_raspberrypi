@@ -20,7 +20,7 @@ pip install -r requirements.txt
 ## Launch
 
 ```bash
-py main.py
+py main.py {api_key} {city}
 ```
 
 ## Lint
