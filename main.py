@@ -8,7 +8,7 @@ import requests
 class Dataset:
     def __init__(self, time_sleep: int = 0.5):
         self.time_sleep: int = time_sleep
-        self.path: str = 'dataset/'
+        self.path: str = './'
         self.extension: str = '.png'
         self.api_path: str = ('https://api.c2smr.fr/machine/'
                               'add_picture_alert_or_moment')
@@ -32,11 +32,11 @@ class Dataset:
                 "key": self.api_key,
             }, files={
                 'file': open(f'{self.city}-dataset-'
-                             f'{self.name_extension_count}.'
+                             f'{self.name_extension_count}'
                              f'{self.extension}', 'rb')
             })
         except Exception:
-            pass
+            print(Exception)
 
     def run(self):
         while True:
